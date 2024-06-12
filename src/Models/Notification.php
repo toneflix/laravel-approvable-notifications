@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use ToneflixCode\ApprovableNotifications\ApprovableNotificationCollection;
+use ToneflixCode\ApprovableNotifications\Events\NotificationCreated;
 use ToneflixCode\ApprovableNotifications\Events\NotificationUpdated;
 
 /**
@@ -97,13 +98,18 @@ class Notification extends Model
                 NotificationUpdated::dispatch($model);
 
                 if ($model->approved) {
-                    $model->notifiable->approvedCallback($model);
+                    $model->notifiable->approvedNotificationCallback($model);
                 }
 
                 if ($model->rejected) {
-                    $model->notifiable->rejectedCallback($model);
+                    $model->notifiable->rejectedNotificationCallback($model);
                 }
             }
+        });
+
+        static::created(function (self $model) {
+            NotificationCreated::dispatch($model);
+            $model->notifier->newNotificationCallback($model);
         });
     }
 

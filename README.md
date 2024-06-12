@@ -232,9 +232,11 @@ $user->notifications()->delete();
 
 ### Events and Callback
 
-When an event is interacted with or updated, we dispatch the `ToneflixCode\ApprovableNotifications\Events\NotificationUpdated` which you can listen to and perform further actions if required, the event will contain the associated `notification` model.
+#### New Notification
 
-Alternattively, you can also implement the `approvedCallback` and the `rejectedCallback` methods on your `HasApprovableNotifications` entity, both of which will be called at the appropriete time as the names imply and will provided with the associated `$notification` model as the first and only parameter.
+When a new notification is created, we dispatch the `ToneflixCode\ApprovableNotifications\Events\NotificationCreated` event which you can listen to and perform further actions if required, the event will contain the associated `notification` model.
+
+Alternattively, you can also implement the `newNotificationCallback` methods on your `SendsApprovableNotifications` entity, which will be called whenever a new notification is created and will provided with the associated `$notification` model as the first and only parameter.
 
 ```php
 namespace App\Models;
@@ -247,12 +249,35 @@ class User extends Authenticatable
 {
     use HasApprovableNotifications;
 
-    public function approvedCallback(Notification $notification) {
-        // Perform any other actions here
+    public function newNotificationCallback(Notification $notification) {
+        // Perform any other actions here when a notification is created
+    }
+}
+```
+
+#### Notification Updates
+
+When a notification is interacted with or updated, we dispatch the `ToneflixCode\ApprovableNotifications\Events\NotificationUpdated` event which you can listen to and perform further actions if required, the event will contain the associated `notification` model.
+
+Alternattively, you can also implement the `approvedNotificationCallback` and the `rejectedNotificationCallback` methods on your `HasApprovableNotifications` entity, both of which will be called at the appropriete time as the names imply and will provided with the associated `$notification` model as the first and only parameter.
+
+```php
+namespace App\Models;
+
+use ToneflixCode\ApprovableNotifications\Traits\HasApprovableNotifications;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use ToneflixCode\ApprovableNotifications\Models\Notification;
+
+class User extends Authenticatable
+{
+    use HasApprovableNotifications;
+
+    public function approvedNotificationCallback(Notification $notification) {
+        // Perform any other actions here when a notification is approved
     }
 
-    public function rejectedCallback(Notification $notification) {
-        // Perform any other actions here
+    public function rejectedNotificationCallback(Notification $notification) {
+        // Perform any other actions here when a notification is rejected
     }
 }
 ```

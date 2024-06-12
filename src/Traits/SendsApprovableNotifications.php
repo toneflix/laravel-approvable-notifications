@@ -50,4 +50,14 @@ trait SendsApprovableNotifications
     {
         return $this->morphMany(Notification::class, 'notifier')->latest();
     }
+
+    /**
+     * Will be called when a notification is sent
+     * @param Notification $notification
+     *
+     * @return void
+     */
+    public function newNotificationCallback(Notification $notification): void
+    {
+    }
 }

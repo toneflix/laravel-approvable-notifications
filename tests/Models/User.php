@@ -39,7 +39,7 @@ class User extends Authenticatable
      * 
      * @return void
      */
-    public function approvedCallback(Notification $notification): void
+    public function approvedNotificationCallback(Notification $notification): void
     {
         // dump($notification);
     }
@@ -50,7 +50,7 @@ class User extends Authenticatable
      *
      * @return void
      */
-    public function rejectedCallback(Notification $notification): void
+    public function rejectedNotificationCallback(Notification $notification): void
     {
         // dump($notification);
     }
