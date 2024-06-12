@@ -241,13 +241,13 @@ Alternattively, you can also implement the `newNotificationCallback` methods on 
 ```php
 namespace App\Models;
 
-use ToneflixCode\ApprovableNotifications\Traits\HasApprovableNotifications;
+use ToneflixCode\ApprovableNotifications\Traits\SendsApprovableNotifications;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use ToneflixCode\ApprovableNotifications\Models\Notification;
 
 class User extends Authenticatable
 {
-    use HasApprovableNotifications;
+    use SendsApprovableNotifications;
 
     public function newNotificationCallback(Notification $notification) {
         // Perform any other actions here when a notification is created
