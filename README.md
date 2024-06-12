@@ -1,12 +1,12 @@
-# Laravel Fileable
+# Laravel Approvable Notifications
 
 [![Test & Lint](https://github.com/toneflix/laravel-approvable-notifications/actions/workflows/php.yml/badge.svg?branch=main)](https://github.com/toneflix/laravel-approvable-notifications/actions/workflows/php.yml)
 [![Latest Stable Version](http://poser.pugx.org/toneflix-code/approvable-notifications/v)](https://packagist.org/packages/toneflix-code/approvable-notifications) [![Total Downloads](http://poser.pugx.org/toneflix-code/approvable-notifications/downloads)](https://packagist.org/packages/toneflix-code/approvable-notifications) [![Latest Unstable Version](http://poser.pugx.org/toneflix-code/approvable-notifications/v/unstable)](https://packagist.org/packages/toneflix-code/approvable-notifications) [![License](http://poser.pugx.org/toneflix-code/approvable-notifications/license)](https://packagist.org/packages/toneflix-code/approvable-notifications) [![PHP Version Require](http://poser.pugx.org/toneflix-code/approvable-notifications/require/php)](https://packagist.org/packages/toneflix-code/approvable-notifications)
-[![codecov](https://codecov.io/gh/toneflix/laravel-approvable-notifications/graph/badge.svg?token=SHm1zYOgLH)](https://codecov.io/gh/toneflix/laravel-fileable)
+[![codecov](https://codecov.io/gh/toneflix/laravel-approvable-notifications/graph/badge.svg?token=SHm1zYOgLH)](https://codecov.io/gh/toneflix/laravel-approvable-notifications)
 
 <!-- ![GitHub Actions](https://github.com/toneflix/laravel-approvable-notifications/actions/workflows/main.yml/badge.svg) -->
 
-Approvable Notifications and to your project and handles the missing features of the Laravel notification system, the ability for users to interact with database notifications.
+Laravel Approvable Notifications Notifications and to your project and handles the missing features of the Laravel notification system, the ability for users to interact with database notifications.
 
 ## Use Cases
 
