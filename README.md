@@ -155,9 +155,31 @@ foreach ($user->approvedApprovableNotifications as $notification) {
 }
 ```
 
-### Accessing the senders Notifications
+#### Accessing the Notification Sender
 
-The sender of a notification also has the ability to access the notifications they sent. The `ToneflixCode\ApprovableNotifications\Traits\SendsApprovableNotifications` trait includes a `approvableSentNotifications` Eloquent relationship that returns the notifications for the entity that sent them.
+You can access the `notifier` relationship on the notification instance to get the model that sent the notification.
+
+```php
+foreach ($user->approvableNotifications as $notification) {
+    $sender = $notification->notifier;
+    echo $sender->name;
+}
+```
+
+#### Accessing the Actionable model
+
+If you added an actionable model when creating the notification, you can also access the `actionable` relationship on the notification instance.
+
+```php
+foreach ($user->approvableNotifications as $notification) {
+    $actionable = $notification->actionable;
+    echo $actionable->title;
+}
+```
+
+### Accessing sent Notifications
+
+Sent notifications also can also be accessed by the sender. The `ToneflixCode\ApprovableNotifications\Traits\SendsApprovableNotifications` trait includes a `approvableSentNotifications` Eloquent relationship that returns the notifications for the entity that sent them.
 
 ```php
 $user = App\Models\User::find(1);
