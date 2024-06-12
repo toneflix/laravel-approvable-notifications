@@ -236,6 +236,27 @@ When an event is interacted with or updated, we dispatch the `ToneflixCode\Appro
 
 Alternattively, you can also implement the `approvedCallback` and the `rejectedCallback` methods on your `HasApprovableNotifications` entity, both of which will be called at the appropriete time as the names imply and will provided with the associated `$notification` model as the first and only parameter.
 
+```php
+namespace App\Models;
+
+use ToneflixCode\ApprovableNotifications\Traits\HasApprovableNotifications;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use ToneflixCode\ApprovableNotifications\Models\Notification;
+
+class User extends Authenticatable
+{
+    use HasApprovableNotifications;
+
+    public function approvedCallback(Notification $notification) {
+        // Perform any other actions here
+    }
+
+    public function rejectedCallback(Notification $notification) {
+        // Perform any other actions here
+    }
+}
+```
+
 ### Testing
 
 ```bash
