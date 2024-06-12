@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use ToneflixCode\ApprovableNotifications\ApprovableNotificationCollection;
+use ToneflixCode\ApprovableNotifications\Events\NotificationUpdated;
 
 /**
  * @property \Illuminate\Support\Carbon|null $read_at The time when the notification was read
@@ -92,6 +93,9 @@ class Notification extends Model
         parent::boot();
         static::updated(function (self $model) {
             if ($model->isDirty('status')) {
+
+                NotificationUpdated::dispatch($model);
+
                 if ($model->approved) {
                     $model->notifiable->approvedCallback($model);
                 }

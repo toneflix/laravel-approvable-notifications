@@ -6,12 +6,13 @@
 
 <!-- ![GitHub Actions](https://github.com/toneflix/laravel-approvable-notifications/actions/workflows/main.yml/badge.svg) -->
 
-Approvable Notifications handles the missing aspects of the Laravel notification system, the ability for users to interact with database notifications.
+Approvable Notifications and to your project and handles the missing features of the Laravel notification system, the ability for users to interact with database notifications.
 
 ## Use Cases
 
 1. Friend Requests
 2. Access Requests
+3. Anything that requires a third party user to approve or reject.
 
 ## Installation
 
@@ -228,6 +229,12 @@ You may delete the notifications to remove them from the table entirely:
 ```php
 $user->notifications()->delete();
 ```
+
+### Events and Callback
+
+When an event is interacted with or updated, we dispatch the `ToneflixCode\ApprovableNotifications\Events\NotificationUpdated` which you can listen to and perform further actions if required, the event will contain the associated `notification` model.
+
+Alternattively, you can also implement the `approvedCallback` and the `rejectedCallback` methods on your `HasApprovableNotifications` entity, both of which will be called at the appropriete time as the names imply and will provided with the associated `$notification` model as the first and only parameter.
 
 ### Testing
 

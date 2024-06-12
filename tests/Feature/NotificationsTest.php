@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Event;
+use ToneflixCode\ApprovableNotifications\Events\NotificationUpdated;
 
 test('can send notifications', function () {
 
@@ -218,4 +220,26 @@ test('can access rejected notifications', function () {
         $user->rejectedApprovableNotifications->every('status', 0) &&
             $user->rejectedApprovableNotifications->count()
     )->toBeTrue();
+});
+
+test('NotificationUpdated event is dispatched', function () {
+    Event::fake([
+        NotificationUpdated::class,
+    ]);
+
+    $faker = \Faker\Factory::create();
+    $user = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $sender = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
+
+    $n = $sender->sendApprovableNotification(
+        recipient: $user, // The recieving model
+        title: $faker->sentence(4), // The title of the notification
+        message: $faker->sentence(10), // The notification text message body
+    );
+
+    $n->markAsApproved();
+
+    Event::assertDispatched(NotificationUpdated::class, function ($event) {
+        return $event->notification->approved === true;
+    });
 });
