@@ -25,7 +25,7 @@ Laravel Approvable Notifications adds to your project and handles the missing fe
 2. Publish resources (migrations and config files):
 
    ```shell
-   php artisan publish:approvable-notifications
+   php artisan vendor:publish --tag=approvable-notifications
    ```
 
 3. Run the migrations with the following command:
