@@ -19,7 +19,7 @@ class CreateApprovableNotificationsTable extends Migration
             $table->string('title')->nullable();
             $table->string('message')->nullable();
             $table->json('data')->nullable();
-            $table->enum('status', [0, 1, 2])->default(1)->comment('[0: Rejected, 1: Pending, 2: Approved]');
+            $table->tinyInteger('status')->default(1)->comment('[0: Rejected, 1: Pending, 2: Approved]');
             $table->timestamp('read_at')->nullable();
             $table->timestamps();
         });

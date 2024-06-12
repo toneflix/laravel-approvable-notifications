@@ -146,21 +146,21 @@ class Notification extends Model
     public function pending(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->status === "1",
+            get: fn () => $this->status === 1,
         );
     }
 
     public function approved(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->status === "2",
+            get: fn () => $this->status === 2,
         );
     }
 
     public function rejected(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->status === "0",
+            get: fn () => $this->status === 0,
         );
     }
 
@@ -193,7 +193,7 @@ class Notification extends Model
      */
     public function markAsApproved(): bool
     {
-        $this->status = "2";
+        $this->status = 2;
         return $this->save();
     }
 
@@ -204,7 +204,7 @@ class Notification extends Model
      */
     public function markAsRejected(): bool
     {
-        $this->status = "0";
+        $this->status = 0;
         return $this->save();
     }
 
@@ -238,7 +238,7 @@ class Notification extends Model
      */
     public function scopeApproved(Builder $query)
     {
-        return $query->whereStatus("2");
+        return $query->whereStatus(2);
     }
 
     /**
@@ -249,7 +249,7 @@ class Notification extends Model
      */
     public function scopePending(Builder $query)
     {
-        return $query->whereStatus("1");
+        return $query->whereStatus(1);
     }
 
     /**
@@ -260,7 +260,7 @@ class Notification extends Model
      */
     public function scopeRejected(Builder $query)
     {
-        return $query->whereStatus("0");
+        return $query->whereStatus(0);
     }
 
     /**
