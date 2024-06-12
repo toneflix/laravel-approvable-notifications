@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use ToneflixCode\ApprovableNotifications\ApprovableNotificationCollection;
-use ToneflixCode\ApprovableNotifications\Events\NotificationCreated;
-use ToneflixCode\ApprovableNotifications\Events\NotificationUpdated;
+use ToneflixCode\ApprovableNotifications\Events\ApprovableNotificationCreated;
+use ToneflixCode\ApprovableNotifications\Events\ApprovableNotificationUpdated;
 
 /**
  * @property \Illuminate\Support\Carbon|null $read_at The time when the notification was read
@@ -95,7 +95,7 @@ class Notification extends Model
         static::updated(function (self $model) {
             if ($model->isDirty('status')) {
 
-                NotificationUpdated::dispatch($model);
+                ApprovableNotificationUpdated::dispatch($model);
 
                 if ($model->approved) {
                     $model->notifiable->approvedNotificationCallback($model);
@@ -108,7 +108,7 @@ class Notification extends Model
         });
 
         static::created(function (self $model) {
-            NotificationCreated::dispatch($model);
+            ApprovableNotificationCreated::dispatch($model);
             $model->notifier->newNotificationCallback($model);
         });
     }

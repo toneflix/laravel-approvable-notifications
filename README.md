@@ -234,7 +234,7 @@ $user->notifications()->delete();
 
 #### New Notification
 
-When a new notification is created, we dispatch the `ToneflixCode\ApprovableNotifications\Events\NotificationCreated` event which you can listen to and perform further actions if required, the event will contain the associated `notification` model.
+When a new notification is created, we dispatch the `ToneflixCode\ApprovableNotifications\Events\ApprovableNotificationCreated` event which you can listen to and perform further actions if required, the event will contain the associated `notification` model.
 
 Alternattively, you can also implement the `newNotificationCallback` methods on your `SendsApprovableNotifications` entity, which will be called whenever a new notification is created and will provided with the associated `$notification` model as the first and only parameter.
 
@@ -257,7 +257,7 @@ class User extends Authenticatable
 
 #### Notification Updates
 
-When a notification is interacted with or updated, we dispatch the `ToneflixCode\ApprovableNotifications\Events\NotificationUpdated` event which you can listen to and perform further actions if required, the event will contain the associated `notification` model.
+When a notification is interacted with or updated, we dispatch the `ToneflixCode\ApprovableNotifications\Events\ApprovableNotificationUpdated` event which you can listen to and perform further actions if required, the event will contain the associated `notification` model.
 
 Alternattively, you can also implement the `approvedNotificationCallback` and the `rejectedNotificationCallback` methods on your `HasApprovableNotifications` entity, both of which will be called at the appropriete time as the names imply and will provided with the associated `$notification` model as the first and only parameter.
 

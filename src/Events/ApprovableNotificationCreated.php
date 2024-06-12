@@ -8,7 +8,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 use ToneflixCode\ApprovableNotifications\Models\Notification;
 
-class NotificationCreated implements ShouldDispatchAfterCommit
+class ApprovableNotificationCreated implements ShouldDispatchAfterCommit
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 

@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Event;
-use ToneflixCode\ApprovableNotifications\Events\NotificationCreated;
-use ToneflixCode\ApprovableNotifications\Events\NotificationUpdated;
+use ToneflixCode\ApprovableNotifications\Events\ApprovableNotificationCreated;
+use ToneflixCode\ApprovableNotifications\Events\ApprovableNotificationUpdated;
 
 test('can send notifications', function () {
 
@@ -223,9 +223,9 @@ test('can access rejected notifications', function () {
     )->toBeTrue();
 });
 
-test('NotificationUpdated event is dispatched', function () {
+test('ApprovableNotificationUpdated event is dispatched', function () {
     Event::fake([
-        NotificationUpdated::class,
+        ApprovableNotificationUpdated::class,
     ]);
 
     $faker = \Faker\Factory::create();
@@ -240,14 +240,14 @@ test('NotificationUpdated event is dispatched', function () {
 
     $n->markAsApproved();
 
-    Event::assertDispatched(NotificationUpdated::class, function ($event) {
+    Event::assertDispatched(ApprovableNotificationUpdated::class, function ($event) {
         return $event->notification->approved === true;
     });
 });
 
-test('NotificationCreated event is dispatched', function () {
+test('ApprovableNotificationCreated event is dispatched', function () {
     Event::fake([
-        NotificationCreated::class,
+        ApprovableNotificationCreated::class,
     ]);
 
     $faker = \Faker\Factory::create();
@@ -260,7 +260,7 @@ test('NotificationCreated event is dispatched', function () {
         message: $faker->sentence(10), // The notification text message body
     );
 
-    Event::assertDispatched(NotificationCreated::class, function ($event) {
+    Event::assertDispatched(ApprovableNotificationCreated::class, function ($event) {
         return $event->notification->seen === false;
     });
 });
