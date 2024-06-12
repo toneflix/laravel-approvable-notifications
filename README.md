@@ -6,7 +6,7 @@
 
 <!-- ![GitHub Actions](https://github.com/toneflix/laravel-approvable-notifications/actions/workflows/main.yml/badge.svg) -->
 
-Laravel Approvable Notifications Notifications and to your project and handles the missing features of the Laravel notification system, the ability for users to interact with database notifications.
+Laravel Approvable Notifications adds to your project and handles the missing features of the Laravel notification system, the ability for users to interact with database notifications.
 
 ## Use Cases
 
