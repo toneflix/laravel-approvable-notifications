@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Event;
 use ToneflixCode\ApprovableNotifications\Events\ApprovableNotificationCreated;
 use ToneflixCode\ApprovableNotifications\Events\ApprovableNotificationUpdated;
+use ToneflixCode\ApprovableNotifications\Exception\InvalidRecipientExeption;
 
 test('can send notifications', function () {
 
@@ -264,3 +265,15 @@ test('ApprovableNotificationCreated event is dispatched', function () {
         return $event->notification->seen === false;
     });
 });
+
+it('throws exception when a notification is sent to an invalid model', function () {
+    $faker = \Faker\Factory::create();
+    $user = \ToneflixCode\ApprovableNotifications\Tests\Models\School::factory()->create();
+    $sender = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
+
+    $sender->sendApprovableNotification(
+        recipient: $user, // The recieving model
+        title: $faker->sentence(4), // The title of the notification
+        message: $faker->sentence(10), // The notification text message body
+    );
+})->throws(InvalidRecipientExeption::class);;

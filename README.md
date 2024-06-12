@@ -282,6 +282,10 @@ class User extends Authenticatable
 }
 ```
 
+### Exceptions
+
+When you attempt to send a notification to an invalid model (a model that does not use the `ToneflixCode\ApprovableNotifications\Traits\HasApprovableNotifications` trait), the library throws the `ToneflixCode\ApprovableNotifications\Exception\InvalidRecipientExeption` exception.
+
 ### Testing
 
 ```bash

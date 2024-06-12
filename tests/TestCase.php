@@ -26,8 +26,10 @@ abstract class TestCase extends Orchestra
 
         config()->set('app.faker_locale', 'en_NG');
 
-        $migration = include __DIR__ . '/database/migrations/create_users_tables.php';
+        $migration = include __DIR__ . '/database/migrations/create_schools_tables.php';
         $migration->up();
+        $migration2 = include __DIR__ . '/database/migrations/create_users_tables.php';
+        $migration2->up();
     }
 
     protected function setUp(): void

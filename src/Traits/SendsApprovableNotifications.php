@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use stdClass;
+use ToneflixCode\ApprovableNotifications\Exception\InvalidRecipientExeption;
 use ToneflixCode\ApprovableNotifications\Models\Notification;
 
 /**
@@ -30,6 +31,9 @@ trait SendsApprovableNotifications
         array|Collection|stdClass $data = new stdClass(),
         ?Model $actionable = null,
     ): \ToneflixCode\ApprovableNotifications\Models\Notification {
+        if (!method_exists($recipient, 'approvableNotifications')) {
+            throw InvalidRecipientExeption::message($recipient);
+        }
         return $recipient->approvableNotifications()->create([
             'data' => $data,
             'title' => $title,
@@ -52,7 +56,7 @@ trait SendsApprovableNotifications
     }
 
     /**
-     * Will be called when a notification is sent
+     * Will be called when a new notification is sent
      * @param Notification $notification
      *
      * @return void
