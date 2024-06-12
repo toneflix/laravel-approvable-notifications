@@ -193,7 +193,7 @@ class Notification extends Model
      */
     public function markAsApproved(): bool
     {
-        $this->status = 2;
+        $this->status = "2";
         return $this->save();
     }
 
@@ -204,7 +204,7 @@ class Notification extends Model
      */
     public function markAsRejected(): bool
     {
-        $this->status = 0;
+        $this->status = "0";
         return $this->save();
     }
 
