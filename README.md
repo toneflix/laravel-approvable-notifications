@@ -1,6 +1,6 @@
 # Laravel Fileable
 
-[![Test & Lint](https://github.com/toneflix/laravel-approvable-notifications/actions/workflows/php.yml/badge.svg?branch=dev)](https://github.com/toneflix/laravel-approvable-notifications/actions/workflows/php.yml)
+[![Test & Lint](https://github.com/toneflix/laravel-approvable-notifications/actions/workflows/php.yml/badge.svg?branch=main)](https://github.com/toneflix/laravel-approvable-notifications/actions/workflows/php.yml)
 [![Latest Stable Version](http://poser.pugx.org/toneflix-code/approvable-notifications/v)](https://packagist.org/packages/toneflix-code/approvable-notifications) [![Total Downloads](http://poser.pugx.org/toneflix-code/approvable-notifications/downloads)](https://packagist.org/packages/toneflix-code/approvable-notifications) [![Latest Unstable Version](http://poser.pugx.org/toneflix-code/approvable-notifications/v/unstable)](https://packagist.org/packages/toneflix-code/approvable-notifications) [![License](http://poser.pugx.org/toneflix-code/approvable-notifications/license)](https://packagist.org/packages/toneflix-code/approvable-notifications) [![PHP Version Require](http://poser.pugx.org/toneflix-code/approvable-notifications/require/php)](https://packagist.org/packages/toneflix-code/approvable-notifications)
 [![codecov](https://codecov.io/gh/toneflix/laravel-approvable-notifications/graph/badge.svg?token=2O7aFulQ9P)](https://codecov.io/gh/toneflix/laravel-fileable)
 
