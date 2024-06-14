@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateApprovableNotificationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -32,4 +32,4 @@ class CreateApprovableNotificationsTable extends Migration
     {
         Schema::dropIfExists(config('approvable-notifications.table_name', 'approvable_notifications'));
     }
-}
+};

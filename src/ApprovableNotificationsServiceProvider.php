@@ -3,6 +3,8 @@
 namespace ToneflixCode\ApprovableNotifications;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\File;
+use Symfony\Component\Finder\SplFileInfo;
 
 class ApprovableNotificationsServiceProvider extends ServiceProvider
 {
@@ -21,7 +23,11 @@ class ApprovableNotificationsServiceProvider extends ServiceProvider
                 __DIR__ . '/../config/config.php' => config_path('approvable-notifications.php'),
             ], 'approvable-notifications');
 
-            if (!class_exists('CreateApprovableNotificationsTable')) {
+            $canMigrate = empty(array_filter(File::files(base_path('database/migrations')), function (SplFileInfo $file) {
+                return str($file->getBasename())->contains('create_approvable_notifications_table');
+            }));
+
+            if ($canMigrate) {
                 $this->publishes([
                     __DIR__ . '/../database/migrations/2024_06_11_172655_create_approvable_notifications_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_approvable_notifications_table.php'),
                 ], 'approvable-notifications');
