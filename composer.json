@@ -5,7 +5,7 @@
         "toneflix-code",
         "approvable-notifications"
     ],
-    "homepage": "https://github.com/toneflix-code/approvable-notifications",
+    "homepage": "https://github.com/toneflix/laravel-approvable-notifications",
     "license": "MIT",
     "type": "library",
     "authors": [
@@ -17,15 +17,16 @@
     ],
     "require": {
         "php": "^8.1|^8.2|^8.3",
-        "illuminate/support": "^8.1|^9.0|^10.0|^11.0"
+        "illuminate/support": "^9.0|^10.0|^11.0"
     },
     "require-dev": {
-        "pestphp/pest": "2.x-dev",
-        "laravel/pint": "^1.15",
         "fakerphp/faker": "^1.23",
         "illuminate/contracts": "^9.0|^10.0|^11.0",
-        "orchestra/testbench": "^8.8",
-        "pestphp/pest-plugin-laravel": "^2.0"
+        "imanghafoori/php-imports-analyzer": "^1.0",
+        "laravel/pint": "^1.15",
+        "orchestra/testbench": "^8.2",
+        "pestphp/pest": "^2.34",
+        "pestphp/pest-plugin-laravel": "^2.4"
     },
     "autoload": {
         "psr-4": {
@@ -52,7 +53,7 @@
             "@php vendor/bin/testbench serve"
         ],
         "analyse": "vendor/bin/phpstan analyse",
-        "test": "vendor/bin/pest",
+        "test": "XDEBUG_MODE=coverage ./vendor/bin/pest --coverage",
         "test-coverage": "vendor/bin/pest --coverage",
         "format": "vendor/bin/pint"
     },
