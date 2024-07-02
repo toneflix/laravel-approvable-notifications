@@ -12,6 +12,6 @@ class InvalidRecipientExeption extends \Exception
 {
     public static function message(Model $model): self
     {
-        return new self($model->getMorphClass() . ' is not using the ToneflixCode\ApprovableNotifications\Traits\HasApprovableNotifications trait');
+        return new self($model->getMorphClass().' is not using the ToneflixCode\ApprovableNotifications\Traits\HasApprovableNotifications trait');
     }
 }

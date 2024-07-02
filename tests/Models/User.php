@@ -9,8 +9,8 @@ use ToneflixCode\ApprovableNotifications\Traits\ApprovableNotifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory;
     use ApprovableNotifiable;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -35,9 +35,6 @@ class User extends Authenticatable
 
     /**
      * Will be called when a notification is approved
-     * @param Notification $notification
-     * 
-     * @return void
      */
     public function approvedNotificationCallback(Notification $notification): void
     {
@@ -46,9 +43,6 @@ class User extends Authenticatable
 
     /**
      * Will be called when a notification is rejected
-     * @param Notification $notification
-     *
-     * @return void
      */
     public function rejectedNotificationCallback(Notification $notification): void
     {

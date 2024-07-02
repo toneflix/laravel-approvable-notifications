@@ -2,9 +2,9 @@
 
 namespace ToneflixCode\ApprovableNotifications\Traits;
 
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
-use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use stdClass;
 use ToneflixCode\ApprovableNotifications\Exception\InvalidRecipientExeption;
 use ToneflixCode\ApprovableNotifications\Models\Notification;
@@ -17,12 +17,11 @@ trait SendsApprovableNotifications
     /**
      * Send a notification to the entity.
      *
-     * @param HasApprovableNotifications|Model $recipient The recieving model
-     * @param string $title The title of the notification
-     * @param string $message The notification message body
-     * @param array|Collection|stdClass $data Any extra data you would like to store
-     * @param ?Model $actionable Any model you would like to access or reference later during retrieval
-     * @return \ToneflixCode\ApprovableNotifications\Models\Notification
+     * @param  HasApprovableNotifications|Model  $recipient  The recieving model
+     * @param  string  $title  The title of the notification
+     * @param  string  $message  The notification message body
+     * @param  array|Collection|stdClass  $data  Any extra data you would like to store
+     * @param  ?Model  $actionable  Any model you would like to access or reference later during retrieval
      */
     public function sendApprovableNotification(
         HasApprovableNotifications|Model $recipient,
@@ -31,9 +30,10 @@ trait SendsApprovableNotifications
         array|Collection|stdClass $data = new stdClass(),
         ?Model $actionable = null,
     ): \ToneflixCode\ApprovableNotifications\Models\Notification {
-        if (!method_exists($recipient, 'approvableNotifications')) {
+        if (! method_exists($recipient, 'approvableNotifications')) {
             throw InvalidRecipientExeption::message($recipient);
         }
+
         return $recipient->approvableNotifications()->create([
             'data' => $data,
             'title' => $title,
@@ -47,8 +47,6 @@ trait SendsApprovableNotifications
 
     /**
      * Get the entity's sent notifications.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
     public function approvableSentNotifications(): \Illuminate\Database\Eloquent\Relations\MorphMany
     {
@@ -57,11 +55,6 @@ trait SendsApprovableNotifications
 
     /**
      * Will be called when a new notification is sent
-     * @param Notification $notification
-     *
-     * @return void
      */
-    public function newNotificationCallback(Notification $notification): void
-    {
-    }
+    public function newNotificationCallback(Notification $notification): void {}
 }

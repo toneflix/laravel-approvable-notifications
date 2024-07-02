@@ -24,9 +24,6 @@ class School extends Authenticatable
 
     /**
      * Will be called when a new notification is sent
-     * @param Notification $notification
-     * 
-     * @return void
      */
     public function newNotificationCallback(Notification $notification): void
     {

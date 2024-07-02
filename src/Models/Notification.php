@@ -19,6 +19,7 @@ use ToneflixCode\ApprovableNotifications\Events\ApprovableNotificationUpdated;
  * @property bool $pending If the notification is till pending
  * @property bool $rejected If the notification has been rejected
  * @property bool $approved If the notification has been approved
+ *
  * @method \Illuminate\Database\Eloquent\Builder unread() Scope the query to return unread messages
  * @method \Illuminate\Database\Eloquent\Builder read() Scope the query to return read messages
  */
@@ -64,7 +65,7 @@ class Notification extends Model
     protected $casts = [
         'data' => \Illuminate\Database\Eloquent\Casts\AsCollection::class,
         'read_at' => 'datetime',
-        'status' => 'integer'
+        'status' => 'integer',
     ];
 
     /**
@@ -73,7 +74,7 @@ class Notification extends Model
      * @var array
      */
     protected $attributes = [
-        'status' => "1",
+        'status' => '1',
         'data' => '{}',
     ];
 
@@ -136,7 +137,7 @@ class Notification extends Model
     public function seen(): Attribute
     {
         return Attribute::make(
-            get: fn () => (bool)$this->read_at,
+            get: fn () => (bool) $this->read_at,
             // set: function (\Illuminate\Support\Carbon $val) {
             //     $this->attributes['read_at'] = $val;
             // }
@@ -166,52 +167,47 @@ class Notification extends Model
 
     /**
      * Change the notification's status to read
-     *
-     * @return bool
      */
     public function markAsRead(): bool
     {
         $this->read_at = now();
+
         return $this->save();
     }
 
     /**
      * Change the notification's status to read
-     *
-     * @return bool
      */
     public function markAsUnread(): bool
     {
         $this->read_at = null;
+
         return $this->save();
     }
 
     /**
      * Approve notification's associated action
-     *
-     * @return bool
      */
     public function markAsApproved(): bool
     {
         $this->status = 2;
+
         return $this->save();
     }
 
     /**
      * Reject notification's associated action
-     *
-     * @return bool
      */
     public function markAsRejected(): bool
     {
         $this->status = 0;
+
         return $this->save();
     }
 
     /**
      * Scope the query to return unread messages
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeUnread(Builder $query)
@@ -222,7 +218,6 @@ class Notification extends Model
     /**
      * Scope the query to return read messages
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeRead(Builder $query)
@@ -233,7 +228,6 @@ class Notification extends Model
     /**
      * Scope the query to return approved messages
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeApproved(Builder $query)
@@ -244,7 +238,6 @@ class Notification extends Model
     /**
      * Scope the query to return pending messages
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopePending(Builder $query)
@@ -255,7 +248,6 @@ class Notification extends Model
     /**
      * Scope the query to return rejected messages
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeRejected(Builder $query)
@@ -266,7 +258,6 @@ class Notification extends Model
     /**
      * Create a new database notification collection instance.
      *
-     * @param  array  $models
      * @return \ToneflixCode\ApprovableNotifications\ApprovableNotificationCollection
      */
     public function newCollection(array $models = [])
