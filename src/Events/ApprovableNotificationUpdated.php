@@ -17,6 +17,5 @@ class ApprovableNotificationUpdated implements ShouldDispatchAfterCommit
      */
     public function __construct(
         public Notification $notification,
-    ) {
-    }
+    ) {}
 }

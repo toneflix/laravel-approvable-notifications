@@ -2,8 +2,8 @@
 
 namespace ToneflixCode\ApprovableNotifications\Traits;
 
-use ToneflixCode\ApprovableNotifications\Models\Notification;
 use Illuminate\Database\Eloquent\Collection;
+use ToneflixCode\ApprovableNotifications\Models\Notification;
 
 /**
  * @property Collection<TKey,Collection> $approvableNotifications Get the entity's notifications
@@ -18,8 +18,6 @@ trait HasApprovableNotifications
 {
     /**
      * Get the entity's notifications.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
     public function approvableNotifications(): \Illuminate\Database\Eloquent\Relations\MorphMany
     {
@@ -78,8 +76,6 @@ trait HasApprovableNotifications
 
     /**
      * Get the entity's notifier.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
      */
     public function approvableNotifier(): \Illuminate\Database\Eloquent\Relations\MorphOne
     {
@@ -88,8 +84,6 @@ trait HasApprovableNotifications
 
     /**
      * Get the entity's actionable.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
      */
     public function approvableNotificationActionable(): \Illuminate\Database\Eloquent\Relations\MorphOne
     {
@@ -98,21 +92,11 @@ trait HasApprovableNotifications
 
     /**
      * Will be called when a notification is approved
-     * @param Notification $notification
-     * 
-     * @return void
      */
-    public function approvedNotificationCallback(Notification $notification): void
-    {
-    }
+    public function approvedNotificationCallback(Notification $notification): void {}
 
     /**
      * Will be called when a notification is rejected
-     * @param Notification $notification
-     *
-     * @return void
      */
-    public function rejectedNotificationCallback(Notification $notification): void
-    {
-    }
+    public function rejectedNotificationCallback(Notification $notification): void {}
 }

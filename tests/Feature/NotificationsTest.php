@@ -276,4 +276,4 @@ it('throws exception when a notification is sent to an invalid model', function 
         title: $faker->sentence(4), // The title of the notification
         message: $faker->sentence(10), // The notification text message body
     );
-})->throws(InvalidRecipientExeption::class);;
+})->throws(InvalidRecipientExeption::class);
