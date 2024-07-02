@@ -3,6 +3,7 @@
 namespace ToneflixCode\ApprovableNotifications;
 
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Notifications\DatabaseNotification;
 
 /**
  * @template TKey of array-key
