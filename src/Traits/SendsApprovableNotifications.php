@@ -27,7 +27,7 @@ trait SendsApprovableNotifications
         HasApprovableNotifications|Model $recipient,
         string $title,
         string $message,
-        array|Collection|stdClass $data = new stdClass(),
+        array|Collection|stdClass $data = new stdClass,
         ?Model $actionable = null,
     ): \ToneflixCode\ApprovableNotifications\Models\Notification {
         if (! method_exists($recipient, 'approvableNotifications')) {
