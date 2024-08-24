@@ -2,6 +2,10 @@
 
 All notable changes to `approvable-notifications` will be documented in this file
 
+## 1.1.0 - 2024-08-24
+
+Fixes missing method bug on Notification model.
+
 ## 1.0.9 - 2024-07-28
 
 ### What's Changed
