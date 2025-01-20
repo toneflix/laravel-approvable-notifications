@@ -110,7 +110,7 @@ class Notification extends Model
 
         static::created(function (self $model) {
             ApprovableNotificationCreated::dispatch($model);
-            $model->notifier->newNotificationCallback($model);
+            $model->notifier?->newNotificationCallback($model);
         });
     }
 
