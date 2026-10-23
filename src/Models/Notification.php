@@ -1,20 +1,20 @@
 <?php
 
-namespace ToneflixCode\ApprovableNotifications\Models;
+namespace Toneflix\ApprovableNotifications\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-use ToneflixCode\ApprovableNotifications\ApprovableNotificationCollection;
-use ToneflixCode\ApprovableNotifications\Events\ApprovableNotificationCreated;
-use ToneflixCode\ApprovableNotifications\Events\ApprovableNotificationUpdated;
+use Toneflix\ApprovableNotifications\ApprovableNotificationCollection;
+use Toneflix\ApprovableNotifications\Events\ApprovableNotificationCreated;
+use Toneflix\ApprovableNotifications\Events\ApprovableNotificationUpdated;
 
 /**
  * @property \Illuminate\Support\Carbon|null $read_at The time when the notification was read
- * @property Model|\ToneflixCode\ApprovableNotifications\Traits\HasApprovableNotifications $notifiable
- * @property Model|\ToneflixCode\ApprovableNotifications\Traits\SendsApprovableNotifications $notifier
+ * @property Model|\Toneflix\ApprovableNotifications\Traits\HasApprovableNotifications $notifiable
+ * @property Model|\Toneflix\ApprovableNotifications\Traits\SendsApprovableNotifications $notifier
  * @property bool $seen If the notification has been seen
  * @property bool $pending If the notification is till pending
  * @property bool $rejected If the notification has been rejected
@@ -258,7 +258,7 @@ class Notification extends Model
     /**
      * Create a new database notification collection instance.
      *
-     * @return \ToneflixCode\ApprovableNotifications\ApprovableNotificationCollection
+     * @return \Toneflix\ApprovableNotifications\ApprovableNotificationCollection
      */
     public function newCollection(array $models = [])
     {

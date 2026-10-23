@@ -2,16 +2,16 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Event;
-use ToneflixCode\ApprovableNotifications\Events\ApprovableNotificationCreated;
-use ToneflixCode\ApprovableNotifications\Events\ApprovableNotificationUpdated;
-use ToneflixCode\ApprovableNotifications\Exception\InvalidRecipientExeption;
+use Toneflix\ApprovableNotifications\Events\ApprovableNotificationCreated;
+use Toneflix\ApprovableNotifications\Events\ApprovableNotificationUpdated;
+use Toneflix\ApprovableNotifications\Exception\InvalidRecipientExeption;
 
 test('can send notifications', function () {
 
     $faker = \Faker\Factory::create();
 
-    $user = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
-    $sender = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $user = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $sender = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
 
     $notif = $sender->sendApprovableNotification(
         recipient: $user, // The recieving model
@@ -28,9 +28,9 @@ test('can send notifications with actionables', function () {
 
     $faker = \Faker\Factory::create();
 
-    $user = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
-    $sender = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
-    $actionable = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $user = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $sender = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $actionable = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
 
     $notif = $sender->sendApprovableNotification(
         recipient: $user, // The recieving model
@@ -48,8 +48,8 @@ test('can reject notifications', function () {
 
     $faker = \Faker\Factory::create();
 
-    $user = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
-    $sender = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $user = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $sender = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
 
     $notif = $sender->sendApprovableNotification(
         recipient: $user, // The recieving model
@@ -64,8 +64,8 @@ test('can accept notifications', function () {
 
     $faker = \Faker\Factory::create();
 
-    $user = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
-    $sender = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $user = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $sender = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
 
     $notif = $sender->sendApprovableNotification(
         recipient: $user, // The recieving model
@@ -80,8 +80,8 @@ test('can mark notifications as read', function () {
 
     $faker = \Faker\Factory::create();
 
-    $user = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
-    $sender = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $user = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $sender = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
 
     $notif = $sender->sendApprovableNotification(
         recipient: $user, // The recieving model
@@ -96,8 +96,8 @@ test('can batch mark notifications', function () {
 
     $faker = \Faker\Factory::create();
 
-    $user = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
-    $sender = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $user = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $sender = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
 
     foreach (range(1, 5) as $value) {
         $sender->sendApprovableNotification(
@@ -117,8 +117,8 @@ test('can access notifications', function () {
 
     $faker = \Faker\Factory::create();
 
-    $user = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
-    $sender = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $user = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $sender = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
 
     foreach (range(1, 5) as $value) {
         $sender->sendApprovableNotification(
@@ -135,8 +135,8 @@ test('can access unread notifications', function () {
 
     $faker = \Faker\Factory::create();
 
-    $user = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
-    $sender = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $user = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $sender = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
 
     foreach (range(1, 5) as $value) {
         $sender->sendApprovableNotification(
@@ -156,8 +156,8 @@ test('can access pending notifications', function () {
 
     $faker = \Faker\Factory::create();
 
-    $user = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
-    $sender = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $user = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $sender = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
 
     foreach (range(1, 5) as $value) {
         $n = $sender->sendApprovableNotification(
@@ -180,8 +180,8 @@ test('can access approved notifications', function () {
 
     $faker = \Faker\Factory::create();
 
-    $user = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
-    $sender = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $user = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $sender = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
 
     foreach (range(1, 5) as $value) {
         $n = $sender->sendApprovableNotification(
@@ -204,8 +204,8 @@ test('can access rejected notifications', function () {
 
     $faker = \Faker\Factory::create();
 
-    $user = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
-    $sender = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $user = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $sender = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
 
     foreach (range(1, 5) as $value) {
         $n = $sender->sendApprovableNotification(
@@ -230,8 +230,8 @@ test('ApprovableNotificationUpdated event is dispatched', function () {
     ]);
 
     $faker = \Faker\Factory::create();
-    $user = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
-    $sender = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $user = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $sender = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
 
     $n = $sender->sendApprovableNotification(
         recipient: $user, // The recieving model
@@ -252,8 +252,8 @@ test('ApprovableNotificationCreated event is dispatched', function () {
     ]);
 
     $faker = \Faker\Factory::create();
-    $user = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
-    $sender = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $user = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $sender = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
 
     $sender->sendApprovableNotification(
         recipient: $user, // The recieving model
@@ -268,8 +268,8 @@ test('ApprovableNotificationCreated event is dispatched', function () {
 
 it('throws exception when a notification is sent to an invalid model', function () {
     $faker = \Faker\Factory::create();
-    $user = \ToneflixCode\ApprovableNotifications\Tests\Models\School::factory()->create();
-    $sender = \ToneflixCode\ApprovableNotifications\Tests\Models\User::factory()->create();
+    $user = \Toneflix\ApprovableNotifications\Tests\Models\School::factory()->create();
+    $sender = \Toneflix\ApprovableNotifications\Tests\Models\User::factory()->create();
 
     $sender->sendApprovableNotification(
         recipient: $user, // The recieving model

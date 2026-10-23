@@ -1,11 +1,11 @@
 <?php
 
-namespace ToneflixCode\ApprovableNotifications\Tests\Models;
+namespace Toneflix\ApprovableNotifications\Tests\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use ToneflixCode\ApprovableNotifications\Models\Notification;
-use ToneflixCode\ApprovableNotifications\Traits\SendsApprovableNotifications;
+use Toneflix\ApprovableNotifications\Models\Notification;
+use Toneflix\ApprovableNotifications\Traits\SendsApprovableNotifications;
 
 class School extends Authenticatable
 {

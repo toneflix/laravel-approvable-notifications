@@ -1,6 +1,6 @@
 <?php
 
-namespace ToneflixCode\ApprovableNotifications;
+namespace Toneflix\ApprovableNotifications;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;

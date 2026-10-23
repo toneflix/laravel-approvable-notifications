@@ -11,7 +11,7 @@
 |
 */
 
-use ToneflixCode\ApprovableNotifications\Tests\TestCase;
+use Toneflix\ApprovableNotifications\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);
 

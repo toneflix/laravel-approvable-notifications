@@ -1,7 +1,7 @@
 # Laravel Approvable Notifications
 
 [![Test & Lint](https://github.com/toneflix/laravel-approvable-notifications/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/toneflix/laravel-approvable-notifications/actions/workflows/run-tests.yml)
-[![Latest Stable Version](http://poser.pugx.org/toneflix-code/approvable-notifications/v)](https://packagist.org/packages/toneflix-code/approvable-notifications) [![Total Downloads](http://poser.pugx.org/toneflix-code/approvable-notifications/downloads)](https://packagist.org/packages/toneflix-code/approvable-notifications) [![Latest Unstable Version](http://poser.pugx.org/toneflix-code/approvable-notifications/v/unstable)](https://packagist.org/packages/toneflix-code/approvable-notifications) [![License](http://poser.pugx.org/toneflix-code/approvable-notifications/license)](https://packagist.org/packages/toneflix-code/approvable-notifications) [![PHP Version Require](http://poser.pugx.org/toneflix-code/approvable-notifications/require/php)](https://packagist.org/packages/toneflix-code/approvable-notifications)
+[![Latest Stable Version](http://poser.pugx.org/toneflix/approvable-notifications/v)](https://packagist.org/packages/toneflix/approvable-notifications) [![Total Downloads](http://poser.pugx.org/toneflix/approvable-notifications/downloads)](https://packagist.org/packages/toneflix/approvable-notifications) [![Latest Unstable Version](http://poser.pugx.org/toneflix/approvable-notifications/v/unstable)](https://packagist.org/packages/toneflix/approvable-notifications) [![License](http://poser.pugx.org/toneflix/approvable-notifications/license)](https://packagist.org/packages/toneflix/approvable-notifications) [![PHP Version Require](http://poser.pugx.org/toneflix/approvable-notifications/require/php)](https://packagist.org/packages/toneflix/approvable-notifications)
 [![codecov](https://codecov.io/gh/toneflix/laravel-approvable-notifications/graph/badge.svg?token=SHm1zYOgLH)](https://codecov.io/gh/toneflix/laravel-approvable-notifications)
 
 <!-- ![GitHub Actions](https://github.com/toneflix/laravel-approvable-notifications/actions/workflows/main.yml/badge.svg) -->
@@ -19,7 +19,7 @@ Laravel Approvable Notifications adds to your project and handles the missing fe
 1. Install the package via composer:
 
    ```bash
-   composer require toneflix-code/approvable-notifications
+   composer require toneflix/approvable-notifications
    ```
 
 2. Publish resources (migrations and config files):
@@ -43,25 +43,25 @@ Laravel automatically discovers and publishes service providers but optionally a
 In the $providers array add the service providers for this package.
 
 ```php
-ToneflixCode\ApprovableNotifications\ApprovableNotificationsServiceProvider::class
+Toneflix\ApprovableNotifications\ApprovableNotificationsServiceProvider::class
 ```
 
 Add the facade of this package to the $aliases array.
 
 ```php
-'ApprovableNotifications' => ToneflixCode\ApprovableNotifications\Facades\ApprovableNotifications::class
+'ApprovableNotifications' => Toneflix\ApprovableNotifications\Facades\ApprovableNotifications::class
 ```
 
 ## Usage
 
 ### The `SendsApprovableNotifications` Trait
 
-To be able to send notifications using Approvable Notifications add the `\ToneflixCode\ApprovableNotifications\Traits\SendsApprovableNotifications` trait to your model:
+To be able to send notifications using Approvable Notifications add the `\Toneflix\ApprovableNotifications\Traits\SendsApprovableNotifications` trait to your model:
 
 ```php
 namespace App\Models;
 
-use ToneflixCode\ApprovableNotifications\Traits\SendsApprovableNotifications;
+use Toneflix\ApprovableNotifications\Traits\SendsApprovableNotifications;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -76,12 +76,12 @@ That's it, we only have to use that trait in our model! Now your users may send 
 
 ### The `HasApprovableNotifications` Trait
 
-For a model to be able to receive notifications using Approvable Notifications you will also need to add the `\ToneflixCode\ApprovableNotifications\Traits\HasApprovableNotifications` trait to your model:
+For a model to be able to receive notifications using Approvable Notifications you will also need to add the `\Toneflix\ApprovableNotifications\Traits\HasApprovableNotifications` trait to your model:
 
 ```php
 namespace App\Models;
 
-use ToneflixCode\ApprovableNotifications\Traits\HasApprovableNotifications;
+use Toneflix\ApprovableNotifications\Traits\HasApprovableNotifications;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -95,7 +95,7 @@ Alternatively, if your model sends and recieves notifications, you can simply ad
 ```php
 namespace App\Models;
 
-use ToneflixCode\ApprovableNotifications\Traits\ApprovableNotifiable;
+use Toneflix\ApprovableNotifications\Traits\ApprovableNotifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -127,7 +127,7 @@ $notif = $sender->sendApprovableNotification(
 
 ### Accessing the Notifications
 
-Once notifications are stored in the database, you need a convenient way to access them from your notifiable entities. The `ToneflixCode\ApprovableNotifications\Traits\HasApprovableNotifications` trait includes a `approvableNotifications` Eloquent relationship that returns the notifications for the entity. To fetch notifications, you may access this method like any other Eloquent relationship. By default, notifications will be sorted by the `created_at` timestamp with the most recent notifications at the beginning of the collection:
+Once notifications are stored in the database, you need a convenient way to access them from your notifiable entities. The `Toneflix\ApprovableNotifications\Traits\HasApprovableNotifications` trait includes a `approvableNotifications` Eloquent relationship that returns the notifications for the entity. To fetch notifications, you may access this method like any other Eloquent relationship. By default, notifications will be sorted by the `created_at` timestamp with the most recent notifications at the beginning of the collection:
 
 ```php
 $user = App\Models\User::find(1);
@@ -179,7 +179,7 @@ foreach ($user->approvableNotifications as $notification) {
 
 ### Accessing sent Notifications
 
-Sent notifications also can also be accessed by the sender. The `ToneflixCode\ApprovableNotifications\Traits\SendsApprovableNotifications` trait includes a `approvableSentNotifications` Eloquent relationship that returns the notifications for the entity that sent them.
+Sent notifications also can also be accessed by the sender. The `Toneflix\ApprovableNotifications\Traits\SendsApprovableNotifications` trait includes a `approvableSentNotifications` Eloquent relationship that returns the notifications for the entity that sent them.
 
 ```php
 $user = App\Models\User::find(1);
@@ -191,7 +191,7 @@ foreach ($user->approvableSentNotifications as $notification) {
 
 ### Marking Notifications as Read
 
-Typically, you will want to mark a notification as "read" when a user views it. The `ToneflixCode\ApprovableNotifications\Traits\HasApprovableNotifications` trait provides a `markAsRead` method, which updates the `read_at` column on the notification's database record:
+Typically, you will want to mark a notification as "read" when a user views it. The `Toneflix\ApprovableNotifications\Traits\HasApprovableNotifications` trait provides a `markAsRead` method, which updates the `read_at` column on the notification's database record:
 
 ```php
 $user = App\Models\User::find(1);
@@ -216,7 +216,7 @@ $user->unreadApprovableNotifications()->update(['read_at' => now()]);
 
 ### Marking Notifications as Approved or Rejected
 
-The primary purpose of this library is to allow you approve or reject actions associated with your models. The `ToneflixCode\ApprovableNotifications\Traits\HasApprovableNotifications` trait provides the `markAsApproved` and `markAsRejected` methods, which will update the `status` column on the notification's database record:
+The primary purpose of this library is to allow you approve or reject actions associated with your models. The `Toneflix\ApprovableNotifications\Traits\HasApprovableNotifications` trait provides the `markAsApproved` and `markAsRejected` methods, which will update the `status` column on the notification's database record:
 
 ```php
 $user = App\Models\User::find(1);
@@ -256,16 +256,16 @@ $user->notifications()->delete();
 
 #### New Notification
 
-When a new notification is created, we dispatch the `ToneflixCode\ApprovableNotifications\Events\ApprovableNotificationCreated` event which you can listen to and perform further actions if required, the event will contain the associated `notification` model.
+When a new notification is created, we dispatch the `Toneflix\ApprovableNotifications\Events\ApprovableNotificationCreated` event which you can listen to and perform further actions if required, the event will contain the associated `notification` model.
 
 Alternattively, you can also implement the `newNotificationCallback` methods on your `SendsApprovableNotifications` entity, which will be called whenever a new notification is created and will provided with the associated `$notification` model as the first and only parameter.
 
 ```php
 namespace App\Models;
 
-use ToneflixCode\ApprovableNotifications\Traits\SendsApprovableNotifications;
+use Toneflix\ApprovableNotifications\Traits\SendsApprovableNotifications;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use ToneflixCode\ApprovableNotifications\Models\Notification;
+use Toneflix\ApprovableNotifications\Models\Notification;
 
 class User extends Authenticatable
 {
@@ -279,16 +279,16 @@ class User extends Authenticatable
 
 #### Notification Updates
 
-When a notification is interacted with or updated, we dispatch the `ToneflixCode\ApprovableNotifications\Events\ApprovableNotificationUpdated` event which you can listen to and perform further actions if required, the event will contain the associated `notification` model.
+When a notification is interacted with or updated, we dispatch the `Toneflix\ApprovableNotifications\Events\ApprovableNotificationUpdated` event which you can listen to and perform further actions if required, the event will contain the associated `notification` model.
 
 Alternattively, you can also implement the `approvedNotificationCallback` and the `rejectedNotificationCallback` methods on your `HasApprovableNotifications` entity, both of which will be called at the appropriete time as the names imply and will provided with the associated `$notification` model as the first and only parameter.
 
 ```php
 namespace App\Models;
 
-use ToneflixCode\ApprovableNotifications\Traits\HasApprovableNotifications;
+use Toneflix\ApprovableNotifications\Traits\HasApprovableNotifications;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use ToneflixCode\ApprovableNotifications\Models\Notification;
+use Toneflix\ApprovableNotifications\Models\Notification;
 
 class User extends Authenticatable
 {
@@ -306,7 +306,7 @@ class User extends Authenticatable
 
 ### Exceptions
 
-When you attempt to send a notification to an invalid model (a model that does not use the `ToneflixCode\ApprovableNotifications\Traits\HasApprovableNotifications` trait), the library throws the `ToneflixCode\ApprovableNotifications\Exception\InvalidRecipientExeption` exception.
+When you attempt to send a notification to an invalid model (a model that does not use the `Toneflix\ApprovableNotifications\Traits\HasApprovableNotifications` trait), the library throws the `Toneflix\ApprovableNotifications\Exception\InvalidRecipientExeption` exception.
 
 ### Testing
 

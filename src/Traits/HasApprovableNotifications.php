@@ -1,9 +1,9 @@
 <?php
 
-namespace ToneflixCode\ApprovableNotifications\Traits;
+namespace Toneflix\ApprovableNotifications\Traits;
 
 use Illuminate\Database\Eloquent\Collection;
-use ToneflixCode\ApprovableNotifications\Models\Notification;
+use Toneflix\ApprovableNotifications\Models\Notification;
 
 /**
  * @property Collection<TKey,Collection> $approvableNotifications Get the entity's notifications

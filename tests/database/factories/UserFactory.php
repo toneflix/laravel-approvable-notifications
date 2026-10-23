@@ -1,10 +1,10 @@
 <?php
 
-namespace ToneflixCode\ApprovableNotifications\Tests\Database\Factories;
+namespace Toneflix\ApprovableNotifications\Tests\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use ToneflixCode\ApprovableNotifications\Tests\Models\User;
+use Toneflix\ApprovableNotifications\Tests\Models\User;
 
 class UserFactory extends Factory
 {

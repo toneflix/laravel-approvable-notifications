@@ -1,13 +1,13 @@
 <?php
 
-namespace ToneflixCode\ApprovableNotifications\Tests;
+namespace Toneflix\ApprovableNotifications\Tests;
 
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Orchestra\Testbench\TestCase as Orchestra;
-use ToneflixCode\ApprovableNotifications\ApprovableNotificationsServiceProvider;
-use ToneflixCode\ApprovableNotifications\Tests\Database\Factories\UserFactory;
+use Toneflix\ApprovableNotifications\ApprovableNotificationsServiceProvider;
+use Toneflix\ApprovableNotifications\Tests\Database\Factories\UserFactory;
 
 abstract class TestCase extends Orchestra
 {
@@ -34,7 +34,7 @@ abstract class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'ToneflixCode\\ApprovableNotifications\\Tests\\Database\\Factories\\'.
+            fn (string $modelName) => 'Toneflix\\ApprovableNotifications\\Tests\\Database\\Factories\\'.
                 class_basename(
                     $modelName
                 ).'Factory'

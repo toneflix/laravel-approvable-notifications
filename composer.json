@@ -1,8 +1,8 @@
 {
-    "name": "toneflix-code/approvable-notifications",
+    "name": "toneflix/approvable-notifications",
     "description": "A Laravel package to handle database notifications that require user interactions",
     "keywords": [
-        "toneflix-code",
+        "toneflix",
         "approvable-notifications"
     ],
     "homepage": "https://github.com/toneflix/laravel-approvable-notifications",
@@ -30,13 +30,13 @@
     },
     "autoload": {
         "psr-4": {
-            "ToneflixCode\\ApprovableNotifications\\": "src"
+            "Toneflix\\ApprovableNotifications\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "ToneflixCode\\ApprovableNotifications\\Tests\\": "tests",
-            "ToneflixCode\\ApprovableNotifications\\Tests\\Database\\Factories\\": "tests/database/factories"
+            "Toneflix\\ApprovableNotifications\\Tests\\": "tests",
+            "Toneflix\\ApprovableNotifications\\Tests\\Database\\Factories\\": "tests/database/factories"
         }
     },
     "scripts": {
@@ -66,10 +66,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ToneflixCode\\ApprovableNotifications\\ApprovableNotificationsServiceProvider"
+                "Toneflix\\ApprovableNotifications\\ApprovableNotificationsServiceProvider"
             ],
             "aliases": {
-                "ApprovableNotifications": "ToneflixCode\\ApprovableNotifications\\ApprovableNotificationsFacade"
+                "ApprovableNotifications": "Toneflix\\ApprovableNotifications\\ApprovableNotificationsFacade"
             }
         }
     }
