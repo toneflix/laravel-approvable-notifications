@@ -3,18 +3,22 @@
 namespace Toneflix\ApprovableNotifications\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Support\Carbon;
 use Toneflix\ApprovableNotifications\ApprovableNotificationCollection;
 use Toneflix\ApprovableNotifications\Events\ApprovableNotificationCreated;
 use Toneflix\ApprovableNotifications\Events\ApprovableNotificationUpdated;
+use Toneflix\ApprovableNotifications\Traits\HasApprovableNotifications;
+use Toneflix\ApprovableNotifications\Traits\SendsApprovableNotifications;
 
 /**
- * @property \Illuminate\Support\Carbon|null $read_at The time when the notification was read
- * @property Model|\Toneflix\ApprovableNotifications\Traits\HasApprovableNotifications $notifiable
- * @property Model|\Toneflix\ApprovableNotifications\Traits\SendsApprovableNotifications $notifier
+ * @property Carbon|null $read_at The time when the notification was read
+ * @property Model|HasApprovableNotifications $notifiable
+ * @property Model|SendsApprovableNotifications $notifier
  * @property bool $seen If the notification has been seen
  * @property bool $pending If the notification is till pending
  * @property bool $rejected If the notification has been rejected
@@ -63,7 +67,7 @@ class Notification extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'data' => \Illuminate\Database\Eloquent\Casts\AsCollection::class,
+        'data' => AsCollection::class,
         'read_at' => 'datetime',
         'status' => 'integer',
     ];
@@ -208,7 +212,7 @@ class Notification extends Model
     /**
      * Scope the query to return unread messages
      *
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return Builder
      */
     public function scopeUnread(Builder $query)
     {
@@ -218,7 +222,7 @@ class Notification extends Model
     /**
      * Scope the query to return read messages
      *
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return Builder
      */
     public function scopeRead(Builder $query)
     {
@@ -228,7 +232,7 @@ class Notification extends Model
     /**
      * Scope the query to return approved messages
      *
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return Builder
      */
     public function scopeApproved(Builder $query)
     {
@@ -238,7 +242,7 @@ class Notification extends Model
     /**
      * Scope the query to return pending messages
      *
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return Builder
      */
     public function scopePending(Builder $query)
     {
@@ -248,7 +252,7 @@ class Notification extends Model
     /**
      * Scope the query to return rejected messages
      *
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return Builder
      */
     public function scopeRejected(Builder $query)
     {
@@ -258,7 +262,7 @@ class Notification extends Model
     /**
      * Create a new database notification collection instance.
      *
-     * @return \Toneflix\ApprovableNotifications\ApprovableNotificationCollection
+     * @return ApprovableNotificationCollection
      */
     public function newCollection(array $models = [])
     {

@@ -9,7 +9,7 @@ use Illuminate\Notifications\DatabaseNotification;
  * @template TKey of array-key
  * @template TModel of DatabaseNotification
  *
- * @extends \Illuminate\Database\Eloquent\Collection<TKey, TModel>
+ * @extends Collection<TKey, TModel>
  */
 class ApprovableNotificationCollection extends Collection
 {

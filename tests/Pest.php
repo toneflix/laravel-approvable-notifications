@@ -11,6 +11,7 @@
 |
 */
 
+use Dotenv\Dotenv;
 use Toneflix\ApprovableNotifications\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);
@@ -44,6 +45,6 @@ expect()->extend('toBeOne', function () {
 function loadEnv()
 {
     // Load the .env file
-    $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__.'/..');
+    $dotenv = Dotenv::createImmutable(__DIR__.'/..');
     $dotenv->safeLoad();
 }
