@@ -1,6 +1,6 @@
 <?php
 
-namespace ToneflixCode\ApprovableNotifications;
+namespace Toneflix\ApprovableNotifications;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Notifications\DatabaseNotification;
@@ -9,7 +9,7 @@ use Illuminate\Notifications\DatabaseNotification;
  * @template TKey of array-key
  * @template TModel of DatabaseNotification
  *
- * @extends \Illuminate\Database\Eloquent\Collection<TKey, TModel>
+ * @extends Collection<TKey, TModel>
  */
 class ApprovableNotificationCollection extends Collection
 {

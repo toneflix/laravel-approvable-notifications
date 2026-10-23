@@ -1,9 +1,12 @@
 <?php
 
-namespace ToneflixCode\ApprovableNotifications\Traits;
+namespace Toneflix\ApprovableNotifications\Traits;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use ToneflixCode\ApprovableNotifications\Models\Notification;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Toneflix\ApprovableNotifications\Models\Notification;
 
 /**
  * @property Collection<TKey,Collection> $approvableNotifications Get the entity's notifications
@@ -19,7 +22,7 @@ trait HasApprovableNotifications
     /**
      * Get the entity's notifications.
      */
-    public function approvableNotifications(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    public function approvableNotifications(): MorphMany
     {
         return $this->morphMany(Notification::class, 'notifiable')->latest();
     }
@@ -27,7 +30,7 @@ trait HasApprovableNotifications
     /**
      * Get the entity's unread notifications.
      *
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return Builder
      */
     public function unreadApprovableNotifications()
     {
@@ -37,7 +40,7 @@ trait HasApprovableNotifications
     /**
      * Get the entity's approved notifications.
      *
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return Builder
      */
     public function approvedApprovableNotifications()
     {
@@ -47,7 +50,7 @@ trait HasApprovableNotifications
     /**
      * Get the entity's pending notifications.
      *
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return Builder
      */
     public function pendingApprovableNotifications()
     {
@@ -57,7 +60,7 @@ trait HasApprovableNotifications
     /**
      * Get the entity's rejected notifications.
      *
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return Builder
      */
     public function rejectedApprovableNotifications()
     {
@@ -67,7 +70,7 @@ trait HasApprovableNotifications
     /**
      * Get the entity's unread notifications.
      *
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return Builder
      */
     public function readApprovableNotifications()
     {
@@ -77,7 +80,7 @@ trait HasApprovableNotifications
     /**
      * Get the entity's notifier.
      */
-    public function approvableNotifier(): \Illuminate\Database\Eloquent\Relations\MorphOne
+    public function approvableNotifier(): MorphOne
     {
         return $this->morphOne(Notification::class, 'notifier');
     }
@@ -85,7 +88,7 @@ trait HasApprovableNotifications
     /**
      * Get the entity's actionable.
      */
-    public function approvableNotificationActionable(): \Illuminate\Database\Eloquent\Relations\MorphOne
+    public function approvableNotificationActionable(): MorphOne
     {
         return $this->morphOne(Notification::class, 'actionable');
     }

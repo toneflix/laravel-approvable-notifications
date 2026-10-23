@@ -1,13 +1,14 @@
 <?php
 
-namespace ToneflixCode\ApprovableNotifications\Traits;
+namespace Toneflix\ApprovableNotifications\Traits;
 
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Collection;
 use stdClass;
-use ToneflixCode\ApprovableNotifications\Exception\InvalidRecipientExeption;
-use ToneflixCode\ApprovableNotifications\Models\Notification;
+use Toneflix\ApprovableNotifications\Exception\InvalidRecipientExeption;
+use Toneflix\ApprovableNotifications\Models\Notification;
 
 /**
  * @property EloquentCollection<TKey,EloquentCollection> $approvableSentNotifications Get the entity's sent notifications.
@@ -29,7 +30,7 @@ trait SendsApprovableNotifications
         string $message,
         array|Collection|stdClass $data = new stdClass,
         ?Model $actionable = null,
-    ): \ToneflixCode\ApprovableNotifications\Models\Notification {
+    ): Notification {
         if (! method_exists($recipient, 'approvableNotifications')) {
             throw InvalidRecipientExeption::message($recipient);
         }
@@ -48,7 +49,7 @@ trait SendsApprovableNotifications
     /**
      * Get the entity's sent notifications.
      */
-    public function approvableSentNotifications(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    public function approvableSentNotifications(): MorphMany
     {
         return $this->morphMany(Notification::class, 'notifier')->latest();
     }

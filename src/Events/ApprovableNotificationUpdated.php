@@ -1,12 +1,12 @@
 <?php
 
-namespace ToneflixCode\ApprovableNotifications\Events;
+namespace Toneflix\ApprovableNotifications\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Events\ShouldDispatchAfterCommit;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use ToneflixCode\ApprovableNotifications\Models\Notification;
+use Toneflix\ApprovableNotifications\Models\Notification;
 
 class ApprovableNotificationUpdated implements ShouldDispatchAfterCommit
 {

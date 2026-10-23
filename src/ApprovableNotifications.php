@@ -1,6 +1,6 @@
 <?php
 
-namespace ToneflixCode\ApprovableNotifications;
+namespace Toneflix\ApprovableNotifications;
 
 class ApprovableNotifications
 {

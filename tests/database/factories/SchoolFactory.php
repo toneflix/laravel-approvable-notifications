@@ -1,9 +1,9 @@
 <?php
 
-namespace ToneflixCode\ApprovableNotifications\Tests\Database\Factories;
+namespace Toneflix\ApprovableNotifications\Tests\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use ToneflixCode\ApprovableNotifications\Tests\Models\School;
+use Toneflix\ApprovableNotifications\Tests\Models\School;
 
 class SchoolFactory extends Factory
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace ToneflixCode\ApprovableNotifications\Facades;
+namespace Toneflix\ApprovableNotifications\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

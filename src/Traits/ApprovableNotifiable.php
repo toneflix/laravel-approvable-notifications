@@ -1,6 +1,6 @@
 <?php
 
-namespace ToneflixCode\ApprovableNotifications\Traits;
+namespace Toneflix\ApprovableNotifications\Traits;
 
 trait ApprovableNotifiable
 {
