@@ -2,6 +2,14 @@
 
 All notable changes to `approvable-notifications` will be documented in this file
 
+## 2.0.1 - 2026-10-23
+
+### What's Changed
+
+* Rename package to toneflix/approvable-notifications by @3m1n3nc3 in https://github.com/toneflix/laravel-approvable-notifications/pull/29
+
+**Full Changelog**: https://github.com/toneflix/laravel-approvable-notifications/compare/2.0.0...2.0.1
+
 ## 2.0.0 - 2026-10-23
 
 ### What's Changed
