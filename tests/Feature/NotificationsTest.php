@@ -280,3 +280,23 @@ it('throws exception when a notification is sent to an invalid model', function 
         message: $faker->sentence(10), // The notification text message body
     );
 })->throws(InvalidRecipientExeption::class);
+
+test('can read notification relations from the sender and the actionable', function () {
+
+    $faker = Factory::create();
+
+    $user = User::factory()->create();
+    $sender = User::factory()->create();
+    $actionable = User::factory()->create();
+
+    $notif = $sender->sendApprovableNotification(
+        recipient: $user,
+        title: $faker->sentence(4),
+        message: $faker->sentence(10),
+        actionable: $actionable
+    );
+
+    expect($sender->approvableSentNotifications()->first()->id)->toBe($notif->id);
+    expect($sender->approvableNotifier->id)->toBe($notif->id);
+    expect($actionable->approvableNotificationActionable->id)->toBe($notif->id);
+});
